@@ -1,1 +1,34 @@
-A text file to man
+man 1 "22 August 2021" "_shell man page"
+
+NAME
+_shell
+
+SYNOPSIS
+#include "shell.h"
+
+/* incluir funcion prototipo de shell */
+
+DESCRIPTION
+
+The _shell program creates and displays a prompt,
+reads a n number of arguments, tokenizes the args
+received, if the function is built in the program executes,
+and if the function is Not Built in, finds in the path,
+reads the function in the directory and executes to finally
+return to the prompt
+
+RETURN VALUE
+
+The Return depends de args write in the input of the
+program, is not the same if we write a "cd" command
+that if we writes a "pwd" commands.
+
+FUNCTIONS INCLUDED
+
+*/ Incluir las funciones que se crearon e incluyeron en el .h */
+
+AUTHORS
+
+Adrian Felipe Ceron <https://github.com/afecego>
+
+Paula Carvajal <https://github.com/paulacarvani>
