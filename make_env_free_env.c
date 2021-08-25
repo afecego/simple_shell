@@ -36,6 +36,5 @@ void free_env(char **env)
 	for (; env[iter]; iter++)
 		free(env[iter]);
 
-	if (env == NULL)
-		free(env);
+	free(env);
 }

@@ -31,6 +31,7 @@ mcount += 10;
 buffer = NULL;
 }
 return (tokens);
+free(tokens);
 }
 
 /**
@@ -54,4 +55,5 @@ for (iter = 0; iter < (*size); iter++)
 New[iter] = cat[iter];
 free(cat);
 return (New);
+free(New);
 }

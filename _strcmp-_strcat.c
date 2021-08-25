@@ -46,4 +46,5 @@ j++;
 }
 concat[i] = '\0';
 return (concat);
+free(concat);
 }

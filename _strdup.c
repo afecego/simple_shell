@@ -20,4 +20,5 @@ i++;
 }
 dupl[i] = '\0';
 return (dupl);
+free(dupl);
 }

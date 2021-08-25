@@ -28,18 +28,24 @@ void path_(vars_f *vars)
 				if (access(str2, F_OK) == 0)
 				{
 					path_concat(vars, str2);
+					free(str1);
+					free(str2);
 					break;
 				}
 				iter2++;
 				free(str1);
 				free(str2);
 			}
+			free(copy);
+			if (strsend == NULL)
+			{
+				func_exit(vars);
+			}
 		}
 		if (path == NULL || strsend[iter2] == NULL)
 		{
 			print_error(vars, ": command not found\n");
 		}
-		free(copy);
 		free(strsend);
 	}
 }
