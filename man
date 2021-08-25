@@ -28,7 +28,7 @@ return to the prompt
 
 ## INVOCATION
 
-This program doesn't need a previous instalation but this needs
+This program doesnt need a previous instalation but this needs
 compilates the program with this option
 
 _gcc \-Wall \-Werror \-Wextra \-pedantic \-std=gnu89 \*\.c \-o simple\_shell_
