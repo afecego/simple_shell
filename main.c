@@ -1,80 +1,47 @@
 #include "shell.h"
 
-/**char * my_strtok(char *buffer, const char *delimiter){
-	
-	static char *keep = NULL;
-	char *put = NULL;
-    char *str = NULL;
-    
-    if (buffer == NULL){
-        buffer = keep;
-    }
-    buffer = buffer;
+/**
+ * main - shell: prompt user for input. Interpret input as commands
+ * @argc: arg count
+ * @argv: arg vector
+ * @environment: enviroment variables
+ * Return: 0
+ */
 
-    if (*buffer != '\0'){
-        put = buffer;
-        if (!*put){
-            keep = '\0';
-        }
-        else{
-            str = put;
-            while (*put != *delimiter && *put != '\0'){
-                put++;
-            }
-            if (*put != '\0'){
-                *put = '\0';
-                put ++;
-            }
-            keep = put;
-        }
-    }
-    return (str);
-}*/
+int main(int argc __attribute__((unused)), char **argv, char **environment)
+{
+	char *prompt = "$ ";
+	size_t len_buffer = 0;
+	unsigned int pipeline = 0, iter;
+	vars_f vars = {NULL, NULL, NULL, NULL};
 
-char **tokenizer(char *buffer, char *delimiter){
-	char **token = NULL;
-	size_t i = 0;
-	unsigned int count = 1;
-
-	if (buffer == NULL){
-		return (NULL);
-	}
-
-	token = malloc(sizeof(char *) *count);
-
-	if (token == NULL){
-		return (NULL);
-	}
-
-	if (*buffer == '\n' || *buffer == ' ' && *(buffer + 1) == '\0'){
-		return (NULL);
-	}
-
-	while ((token[i] = my_strtok(buffer,delimiter)) != NULL){
-		i++;
-		if (i >= count){
-			token = realloc(token, sizeof(char *) * (i + 1));
-			if (token == NULL){
-				return (NULL);
-			}
-			buffer = NULL;
+	vars.argv = argv;
+	vars.environ = make_env(environment);
+	if (!isatty(STDIN_FILENO))
+		pipeline = 1;
+	if (pipeline == 0)
+		_puts(prompt);
+	while (getline(&(vars.buffer), &len_buffer, stdin) != -1)
+	{
+		vars.command = tokenizer(vars.buffer, ";");
+		for (iter = 0; vars.command[iter] != NULL; iter++)
+		{
+			vars.commandsAv = tokenizer(vars.command[iter], "\n ");
+			if (vars.commandsAv[0])
+				if (get_struc(&vars) == NULL)
+					path_(&vars);
+			free(vars.commandsAv);
 		}
-		return (token);
+		free(vars.buffer);
+		free(vars.command);
+		if (pipeline == 0)
+			_puts(prompt);
+		vars.buffer = NULL;
 	}
-}
 
-int main (void){
-
-    char buffer[] = "azucar limon";
-    char *delimiter = " ";
-    char **array;
-    
-	array = tokenizer(buffer, delimiter);
-    
-	while(*array != NULL)
-    {
-        printf("%s\n",*array);
-        array++;
-    }
-    return(0);
+	if (pipeline == 0)
+		_puts("\n");
+	free_env(vars.environ);
+	free(vars.buffer);
+	exit(0);
 }
