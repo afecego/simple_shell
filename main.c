@@ -13,7 +13,7 @@ int main(int argc __attribute__((unused)), char **argv, char **environment)
 	char *prompt = "$ ";
 	size_t len_buffer = 0;
 	unsigned int pipeline = 0, iter;
-	vars_f vars = {NULL, NULL, NULL, NULL};
+	vars_f vars = {NULL, NULL, NULL, NULL, NULL};
 
 	vars.argv = argv;
 	vars.environ = make_env(environment);

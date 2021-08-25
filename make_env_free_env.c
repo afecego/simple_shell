@@ -29,7 +29,7 @@ char **make_env(char **env2)
  * Return: no return
  */
 
-char free_env(char **env)
+void free_env(char **env)
 {
 	int iter = 0;
 

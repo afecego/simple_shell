@@ -8,7 +8,7 @@
 
 void path_(vars_f *vars)
 {
-	int iter, iter2 = 0, compar;
+	int iter2 = 0;
 	char *copy, *path, *str1, *str2, **strsend;
 
 	if (check_for_dir(vars->commandsAv[0]))
