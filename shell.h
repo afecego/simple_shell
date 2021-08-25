@@ -23,11 +23,11 @@
 
 typedef struct variables
 {
-  char *buffer;
-  char **argv;
-  char **environ;
-  char **command;
-  char **commandsAv;
+	char *buffer;
+	char **argv;
+	char **environ;
+	char **command;
+	char **commandsAv;
 } vars_f;
 
 /**
@@ -38,8 +38,8 @@ typedef struct variables
 
 typedef struct funcs
 {
-  char *name;
-  char (*f)(vars_f *);
+	char *name;
+	char (*f)(vars_f *);
 } funcs_t;
 
 void path_(vars_f *vars);
