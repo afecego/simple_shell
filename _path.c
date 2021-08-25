@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * path_ - function to finds the command in PATH env
+ * path_ - function to finds command in PATH env
  * @vars: structure variable required
  * Return: no return
  */
