@@ -137,4 +137,4 @@ $
 
 #### 7. What happens when you type `ls -l *.c` in the shell
 
-* Check the post here: "link"
+* Check the post here: <https://www.linkedin.com/pulse/what-happen-when-you-write-ls-l-c-shell-paula-carvajal-nieto/?trackingId=0xhDoU60Tc%2Brde4kDge%2BuQ%3D%3D>
